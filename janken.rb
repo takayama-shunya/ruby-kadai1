@@ -6,14 +6,14 @@ class Player
     puts "0:グー, 1:チョキ, 2:パー"
     # 変数「input_hand」にプレイヤーが入力したものを取得して代入します。
       # ヒント! 「getsメソッド」を使用します。
-    input_hand = gets.to_s
+    input_hand = gets.chomp
     while true
-      if input_hand =~ /^[0-2]*$/
+      if input_hand == "0" || input_hand == "1" || input_hand == "2"
         return input_hand.to_i
       else
         puts "0~2の数字を入力してください。"
         puts "0:グー, 1:チョキ, 2:パー"
-        input_hand = gets.to_s
+        input_hand = gets.chomp
       end
     end
     # 「input_hand」(取得した値)が「0, 1, 2」のいずれかだとwhileから脱出させ、それ以外だと初めから繰り返させます。
