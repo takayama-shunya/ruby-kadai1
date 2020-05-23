@@ -6,14 +6,14 @@ class Player
     puts "0:グー, 1:チョキ, 2:パー"
     # 変数「input_hand」にプレイヤーが入力したものを取得して代入します。
       # ヒント! 「getsメソッド」を使用します。
-    input_hand = gets.to_i
+    input_hand = gets.to_s
     while true
-      if input_hand == 0 || input_hand == 1 || input_hand == 2
-        return input_hand
+      if input_hand =~ /^[0-2]*$/
+        return input_hand.to_i
       else
         puts "0~2の数字を入力してください。"
         puts "0:グー, 1:チョキ, 2:パー"
-        input_hand = gets.to_i
+        input_hand = gets.to_s
       end
     end
     # 「input_hand」(取得した値)が「0, 1, 2」のいずれかだとwhileから脱出させ、それ以外だと初めから繰り返させます。
@@ -81,7 +81,7 @@ enemy = Enemy.new
 # 変数「janken」にJankenをインスタンス化したものを代入します。
 janken = Janken.new
 #puts(janken.pon(player.hand, enemy.hand))
-next_game = janken.pon(player.hand, enemy.hand)
+next_game = true
 #puts(next_game)
 while next_game == true
   next_game = janken.pon(player.hand, enemy.hand)
